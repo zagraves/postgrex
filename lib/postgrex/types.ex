@@ -217,7 +217,7 @@ defmodule Postgrex.Types do
   defp row_decode(<<>>), do: []
 
   defp row_decode(<<-1::int32(), rest::binary>>) do
-    [nil | row_decode(rest)]
+    ["-" | row_decode(rest)]
   end
 
   defp row_decode(<<len::uint32(), value::binary(len), rest::binary>>) do
